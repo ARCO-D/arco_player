@@ -1,0 +1,122 @@
+.main-area .music-list-area{
+    position: absolute;
+    left: 0;
+    height: 87%;
+    width: 25%;
+    background-color: cadetblue;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition-duration: 2s;
+}
+
+.main-area .music-list-area-hidden{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 25%;
+    background-color: cadetblue;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: translateX(-100%);
+    transition-duration: 2s;
+}
+
+.main-area .music-list-area-long{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 25%;
+    background-color: cadetblue;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition-duration: 2s;
+}
+
+/* id为奇数的音乐 */
+.single-music-odd{
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 90%;
+    left: 5%;
+    border: none;
+    background-color: white;
+}
+.single-music-odd:hover{
+    background-color: #dddddd;
+}
+.single-music-odd:active{
+    background-color: #bbbbbb;
+}
+
+/* id为偶数的音乐 */
+.single-music-even{
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 90%;
+    left: 5%;
+    border: none;
+    background-color: #eeeeee;
+}
+.single-music-even:hover{
+    background-color: #dddddd;
+}
+.single-music-even:active{
+    background-color: #bbbbbb;
+}
+
+
+/* 音乐列表上方的空区域 */
+.top-vacant-area{
+    position: relative;
+    height: 7.2%;
+    width: 100%;
+    background-color: cadetblue;
+}
+
+.search-area{
+    position: fixed;
+    height: 6%;
+    width: 24%;
+    background-color: cadetblue;
+    z-index: 1;
+    padding: 0;
+}
+
+.search-area .search-input{
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    width: 80%;
+    height: 50%;
+    margin: 0;
+    border: none;
+}
+
+.search-area .search-icon{
+    position: absolute;
+    left: 90%;
+    top: 28%;
+    background: none;
+    background-image: url(../image/search-icon.png);
+    background-repeat: no-repeat;
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

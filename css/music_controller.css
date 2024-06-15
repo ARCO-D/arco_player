@@ -1,0 +1,232 @@
+html{
+    height: 100%;
+}
+
+body{
+    display: absolute;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.main-area{
+    display: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+/* 播放器区域 */
+.main-area .player-area{
+    position: absolute;
+    height: 13vh;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: steelblue;
+}
+
+/*播放器折叠*/
+.main-area .player-area-fold{
+    position: absolute;
+}
+
+/*音乐封面区域*/
+.main-area .music-image{
+    position: absolute;
+    background: none;
+    background-image: url(../image/default_cover.jpg);
+    background-repeat: no-repeat;
+    background-size: 13vh 13vh;
+    width: 13vh;  /*使用vh 按照浏览器窗口宽度指定大小*/
+    height: 13vh;
+    border-radius: 20px;
+}
+
+/*音乐名称区域*/
+.music-name-area{
+    position: absolute;
+    left: 13vh;
+}
+.music-name-bt{
+    height: 5%;
+    margin-top: 5px;
+    margin-left: 5px;
+    border: none;
+    background: none;
+    color: wheat;
+    font-size: 18px;
+    overflow: hidden;
+    animation: change-name-color 4s infinite;
+    animation-timing-function: linear;
+}
+@keyframes change-name-color{
+    50%{
+        color: white;
+    }
+    100%{
+        color: wheat;
+    }
+}
+
+/* 控制播放中心区域 */
+.music-control-area-center{
+    position: absolute;
+    left:45.5%;
+    top:3vh;
+}
+
+/* 播放/暂停 */
+.music-control-area-center .play-pause-bt{
+    background: none; /*先清空背景*/
+    background-image: url(../image/play_music.png);
+    background-repeat: no-repeat;
+	background-size: 40px 40px;/*给button设置背景图案，必须要设置background-size和width、height才能显示*/
+	width: 40px;
+	height: 40px;
+    border: none;
+}
+
+/*播放上一首*/
+.music-control-area-center .previous-bt{
+    background: none; /*先清空背景*/
+    background-image: url(../image/previous_music.png);
+	background-size: 40px 40px;/*给button设置背景图案，必须要设置background-size和width、height才能显示*/
+	width: 40px;
+	height: 40px;
+    border: none;
+    margin-right: 1vw;
+}
+/*按下播放上一首时*/
+.music-control-area-center .previous-bt:active{
+	background-image:url(../image/previous_music_pressed.png);
+	background-size:40px 40px;/*给button设置背景图案，必须要设置background-size和width、height才能显示*/
+	width:40px;
+	height:40px;
+}
+
+/* 下一首按键 */
+.music-control-area-center .next-bt{
+    background: none; /*先清空背景*/
+	background-image:url(../image/next_music.png);
+	background-size: 40px 40px;/*给button设置背景图案，必须要设置background-size和width、height才能显示*/
+	width: 40px;
+	height: 40px;
+    border: none;
+    margin-left: 1vw;
+}
+.music-control-area-center .next-bt:active{
+    background: none; /*先清空背景*/
+	background-image:url(../image/next_music_pressed.png);
+	background-size: 40px 40px;/*给button设置背景图案，必须要设置background-size和width、height才能显示*/
+	width: 40px;
+	height: 40px;
+    border: none;
+}
+
+
+/* 总进度条 */
+.total-progress{
+    position: absolute;
+    /* top: 85px; */
+    bottom: 1.5vh;
+    height: 10px;
+    width: 40%;
+    left: 30%;
+    background: linear-gradient(
+        to bottom,
+        steelblue 0%,
+        steelblue 40%,
+        white 40%,
+        white 60%,
+        steelblue 60%,
+        steelblue 100%
+    );
+    z-index: 0;
+}
+
+/* 当前进度 */
+.current-progress{
+    position: absolute;
+    top: 4px;
+    height: 2px;
+    width: 20%;
+    background-color: coral;
+    z-index: 100;
+}
+
+/* 控制播放右侧区域 */
+.music-control-area-right{
+    position: absolute;
+    right: 0;
+    width: 13vh;
+    height: 13vh;
+}
+
+/* 音乐播放模式:随机 单曲 列表 */
+.music-control-area-right .play-mode-bt{
+    position: absolute;
+    right: 2vw;
+    bottom: 1vh;
+    border: none;
+    background: none;
+    background-image: url(../image/random.png);
+    background-size: 2vw 2vw;
+    width: 2vw;
+    height: 2vw;
+}
+
+/* 折叠播放器区域 */
+.music-control-area-right .fold_player-bt{
+
+}
+
+/* 展开播放器区域 */
+.music-control-area-right .unfold_player-bt{
+
+}
+
+/*折叠播放器区域*/
+/*展开播放器区域*/
+/*折叠音乐列表*/
+/*展开音乐列表*/
+/*player隐藏下展开音乐列表*/
+/*player隐藏性折叠音乐列表*/
+
+/*调整音量按键*/
+.inc-volume-bt{
+    position: absolute;
+    right: 2vw;
+    top: 1.5vh;
+    border: none;
+    background: none;
+    background-image: url(../image/increase_volume.png);
+    background-size: 2vw 2vw;
+    width: 2vw;
+    height: 2vw;
+}
+
+.dec-volume-bt{
+    position: absolute;
+    right: 8vw;
+    top: 1.5vh;
+    border: none;
+    background: none;
+    background-image: url(../image/decrease_volume.png);
+    background-size: 2vw 2vw;
+    width: 2vw;
+    height: 2vw;
+}
+
+.display-volume-bt{
+    position: absolute;
+    right: 4.2vw;
+    top: 1.7vh;
+    border: none;
+    background: none;
+    font-size: 1.6vw;
+    color: white;
+    background: none;
+}
+
+
+

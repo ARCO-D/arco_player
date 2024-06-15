@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>ARCO music player</title>
+<link rel="stylesheet" type="text/css" href="css/music_controller.css">
+<link rel="stylesheet" type="text/css" href="css/music_list.css">
+<script src="js/index.js"></script>
+</head>
+<body background="image/background.jpg" style="background-repeat:no-repeat; background-size:cover; background-attachment:fixed" >
+
+<div class="main-area">
+
+<!-- music list area -->
+<div class="music-list-area" id="music_list_area">
+    <div class="search-area">
+        <input type="text" class="search-input" id="search_ipt">
+        <button class="search-icon" onclick="searchMusic()"></button>
+    </div>
+    <div class="top-vacant-area"></div>
+</div>
+
+<!-- music player area -->
+    <div class="player-area">
+    <!-- music image -->
+    <div class="music-image" id="musicImage"></div>
+
+    <!-- music src file -->
+    <audio class="music" id="music">
+        <source src="chengdu.mp3" type="audio/wav">
+    </audio>
+
+    <!-- music name -->
+    <div class="music-name-area" id="musicNameArea">
+        <button type="button" class="music-name-bt" id="currentMusic"></button>
+    </div>
+
+    <!-- music progress line -->
+    <div class="total-progress" id="totalProgress" onclick="changePlayPosition(event)">
+        <div class="current-progress" id="currentProgress"></div>
+    </div>
+
+    <!-- center control area -->
+    <div class="music-control-area-center">
+        <button type="button" class="previous-bt" id="previousBt" onclick="previousMusic()"></button>
+        <button type="button" class="play-pause-bt" id="playpauseBt" onclick="playPauseMusic()"></button>
+        <button type="button" class="next-bt" id="nextBt" onclick="nextMusic()"></button>
+    </div>
+
+    <!-- right control area -->
+    <div class="music-control-area-right">
+        <!-- <button type="button" class="fold_music-list-bt" id="folrMusicListBt" onclick="foldMusicList()"></button>
+        <button type="button" class="fold_player-bt" id="folrPlayerBt" onclick="foldPlayer()"></button> -->
+        <button type="button" class="play-mode-bt" id="playModeBt" onclick="switchPlayMode()"></button>
+        <button type="button" class="inc-volume-bt" id="incVolumeBt" onclick="changeVolume('inc')"></button>
+        <button type="button" class="display-volume-bt" id="displayVolumeBt">5%</button>
+        <button type="button" class="dec-volume-bt" id="decVolumeBt" onclick="changeVolume('dec')"></button>
+    </div>
+
+    </div>
+
+</div>
+
+</body>    
+
+<!-- init -->
+<script>
+    init();
+</script>
+
+</html>
