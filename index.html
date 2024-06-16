@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/music_controller.css">
 <link rel="stylesheet" type="text/css" href="css/music_list.css">
 <script src="js/index.js"></script>
+<script src="js/music_list.js"></script>
 </head>
 <body>
 <div id="background"></div>  
@@ -17,7 +18,9 @@
     <div class="search-area">
         <input type="text" class="search-input" id="search_ipt">
         <button class="search-icon" onclick="searchMusic()"></button>
+        <button class="save-weight-bt" onclick="saveWeightFile()"></button>
     </div>
+    <!-- 用来隔离顶部区域和下方的音乐列表 -->
     <div class="top-vacant-area"></div>
 </div>
 
@@ -66,7 +69,11 @@
 
 <!-- init -->
 <script>
+    let startTime = performance.now();  
     init();
+    let endTime = performance.now();  
+    let duration = endTime - startTime; // 获取代码执行的时间长度（毫秒） 
+    console.log("init time: " + duration + " ms");
 </script>
 
 </html>

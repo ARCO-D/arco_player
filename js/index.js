@@ -1,6 +1,7 @@
-// 注册配置js文件
 // 加载music_list music_path变量
 document.write("<script type='text/javascript' src='js/var.js' charset='gb2312'></script>");
+// 加载saved_weight_list
+document.write("<script type='text/javascript' src='js/weight.js' charset='utf-8'></script>");
 
 
 var play_or_pause = 0;           // 0为当前在暂停 1为在播放
@@ -16,10 +17,16 @@ var current_progress;
 var player_display_state = 1;
 var music_list_display_state = 1;
 var volume_display;
+var music_weight_list = [];      // 全局音乐权重表
+var weight_sum = 2726;           // 权重总和, 每次更改权重后更新, 避免在随机播放时进行运算
 
 function init(){
     // 初始化音乐列表
     var music_list_area = document.getElementById("music_list_area");
+
+    // 加载权重列表
+    loadWeightList();
+
     for (var i = 0; i < music_list.length; i++) {
         // 创建音乐元素
         var node = document.createElement("button");
@@ -28,7 +35,31 @@ function init(){
         node.onclick = select_music;
         if (i % 2 == 0) node.className = "single-music-even";
         else node.className = "single-music-odd";
+
+        // 在音乐块后创建减少权重的按钮
+        var dw_node = document.createElement("button");
+        dw_node.innerText = '-';
+        dw_node.id = "dw_" + i; // decrease weight
+        dw_node.onclick = decreaseMusicWeight;
+        dw_node.className = 'decrease-weight-bt';
+
+        // 显示权重的节点(直接现实loadWeightList加载出的权重
+        var show_node = document.createElement("button");
+        show_node.innerText = music_weight_list[i].weight;
+        show_node.id = "sw_" + i; // show weight
+        show_node.className = 'show-weight-bt';
+
+        // 增加权重的按钮
+        var iw_node = document.createElement("button");
+        iw_node.innerText = '+';
+        iw_node.id = "iw_" + i; // increads
+        iw_node.onclick = increaseMusicWeight;
+        iw_node.className = 'increase-weight-bt';
+        
         music_list_area.append(node);
+        music_list_area.append(dw_node);
+        music_list_area.append(show_node);
+        music_list_area.append(iw_node);
     }
     music_list_area.append(document.createElement("br"));
 
@@ -64,7 +95,6 @@ function changeMusicByIndex(dst_music_index){
     // 重新加载音乐
     music.load();
     // 切换音乐信息
-    console.log('dst index' + dst_music_index);
     var str = music_list[dst_music_index].substring(0, music_list[dst_music_index].lastIndexOf('.'));
     document.getElementById("currentMusic").innerText = str;
     playPauseMusic();
@@ -104,6 +134,21 @@ function changeToPauseState(){
     play_pause_bt.style.backgroundImage = "url(image/play_music.png)";
 }
 
+
+function allocRandomValueByWeight(){
+    var random_hit = Math.floor(Math.random() * weight_sum);
+    console.log(random_hit);
+    for (var i = 0; i < music_list.length; i++) {
+        // 减去第i首歌的权重, 如果随机值命中了这个范围,那么返回这首歌的索引
+        console.log("random_hit residue: " + random_hit + ". will sub " + music_weight_list[i].weight);
+        random_hit -= music_weight_list[i].weight;
+        if (random_hit <= 0) {
+            console.log("random hit: " + music_list[i]);
+            return i;
+        }
+    }
+}
+
 // 播放结束后根据模式默认执行的事件
 function musicPlayOver(){
     var next_index;
@@ -118,7 +163,8 @@ function musicPlayOver(){
             else next_index = (parseInt(music_index) + 1);
             break;
         case "random":
-            next_index = Math.floor(Math.random() * music_list.length);
+            // 按照权重分配随机值
+            next_index = allocRandomValueByWeight();
             break;
     }
     console.log("next_index:" + next_index);
@@ -130,7 +176,8 @@ function nextMusic(){
     var next_index;
     switch(play_mode){
         case "random":
-            next_index = Math.floor(Math.random() * music_list.length);
+            // 按照权重分配随机值
+            next_index = allocRandomValueByWeight();
             break;
         default:
             if (music_index == (music_list.length - 1)){
@@ -138,16 +185,16 @@ function nextMusic(){
             }
             else next_index = (parseInt(music_list) + 1);
     }
-    console.log("next_index:" + next_index);
     changeMusicByIndex(next_index);
 }
 
 // 播放上一首,暂不支持随机模式回到上一首,会返回一个随机值
-function nextMusic(){
+function previousMusic(){
     var next_index;
     switch(play_mode){
         case "random":
-            next_index = Math.floor(Math.random() * music_list.length);
+            // 按照权重分配随机值
+            next_index = allocRandomValueByWeight();
             break;
         default:
             if (music_index == 0){
@@ -155,7 +202,6 @@ function nextMusic(){
             }
             else next_index = (parseInt(music_list) - 1);
     }
-    console.log("next_index:" + next_index);
     changeMusicByIndex(next_index);
 }
 
@@ -220,27 +266,4 @@ function changeVolume(p){
         else music.volume = 0;
         volume_display.innerText = Math.round(music.volume * 100) + "%";
     }
-}
-
-// 查找音乐
-function searchMusic(){
-    const mla = document.querySelector(`#music_list_area`);
-    const music_node_list = mla.querySelectorAll('button');
-
-    search_str = document.getElementById("search_ipt").value;
-    console.log("search:" + search_str);
-
-    if (search_str.length == 0) return;
-
-    // 清除上次的搜索结果
-    music_node_list.forEach(music_node_list => {
-        music_node_list.style.color = 'black';
-    });
-
-    music_node_list.forEach(music_node_list => {
-        if (music_node_list.textContent.includes(search_str))
-            music_node_list.style.color = 'coral';
-        else music_node_list.style.color = 'black';
-    });
-
 }

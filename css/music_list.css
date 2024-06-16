@@ -1,8 +1,8 @@
 .main-area .music-list-area{
     position: absolute;
     left: 0;
-    height: 87%;
-    width: 25%;
+    height: 87vh;
+    width: 28vw;
     background-color: cadetblue;
     overflow-y: auto;
     overflow-x: hidden;
@@ -13,7 +13,7 @@
     position: absolute;
     left: 0;
     height: 100%;
-    width: 25%;
+    width: 28vw;
     background-color: cadetblue;
     overflow-y: auto;
     overflow-x: hidden;
@@ -25,7 +25,7 @@
     position: absolute;
     left: 0;
     height: 100%;
-    width: 25%;
+    width: 28vw;
     background-color: cadetblue;
     overflow-y: auto;
     overflow-x: hidden;
@@ -35,12 +35,15 @@
 /* id为奇数的音乐 */
 .single-music-odd{
     position: relative;
-    display: block;
+    display: inline-block;
     height: 40px;
-    width: 90%;
+    width: 80%;
     left: 5%;
     border: none;
     background-color: white;
+    white-space: nowrap; /* 防止文本换行 */
+    overflow: hidden; /* 隐藏溢出的内容 */
+    text-overflow: ellipsis; /* 显示省略号 */
 }
 .single-music-odd:hover{
     background-color: #dddddd;
@@ -52,12 +55,15 @@
 /* id为偶数的音乐 */
 .single-music-even{
     position: relative;
-    display: block;
+    display: inline-block;
     height: 40px;
-    width: 90%;
+    width: 80%;
     left: 5%;
     border: none;
     background-color: #eeeeee;
+    white-space: nowrap; /* 防止文本换行 */
+    overflow: hidden; /* 隐藏溢出的内容 */
+    text-overflow: ellipsis; /* 显示省略号 */
 }
 .single-music-even:hover{
     background-color: #dddddd;
@@ -65,6 +71,50 @@
 .single-music-even:active{
     background-color: #bbbbbb;
 }
+
+/* 减少权重按钮 */
+.decrease-weight-bt{
+    position: absolute;
+    display: inline-block;
+    height: 40px;
+    width: 5%;
+    right: 15%;
+    border: none;
+    background-color: #eeeeee;
+}
+.decrease-weight-bt:hover{
+    background-color: #dddddd;
+}
+.decrease-weight-bt:active{
+    background-color: #bbbbbb;
+}
+/* 增加权重按钮 */
+.increase-weight-bt{
+    position: absolute;
+    display: inline-block;
+    height: 40px;
+    width: 5%;
+    right: 5%;
+    border: none;
+    background-color: #eeeeee;
+}
+.increase-weight-bt:hover{
+    background-color: #dddddd;
+}
+.increase-weight-bt:active{
+    background-color: #bbbbbb;
+}
+/* 显示权重按钮 */
+.show-weight-bt{
+    position: absolute;
+    display: inline-block;
+    height: 40px;
+    width: 5%;
+    right: 10%;
+    border: none;
+    background-color: #eeeeee;
+}
+
 
 
 /* 音乐列表上方的空区域 */
@@ -78,7 +128,7 @@
 .search-area{
     position: fixed;
     height: 6%;
-    width: 24%;
+    width: 26.8vw;
     background-color: cadetblue;
     z-index: 1;
     padding: 0;
@@ -88,7 +138,7 @@
     position: absolute;
     top: 25%;
     left: 5%;
-    width: 80%;
+    width: 70%;
     height: 50%;
     margin: 0;
     border: none;
@@ -96,18 +146,36 @@
 
 .search-area .search-icon{
     position: absolute;
-    left: 90%;
+    left: 78%;
     top: 28%;
     background: none;
-    background-image: url(../image/search-icon.png);
+    background-image: url(../image/search_icon.png);
     background-repeat: no-repeat;
-    background-size: 27px 27px;
-    width: 27px;
-    height: 27px;
+    background-size: 28px 28px;
+    width: 28px;
+    height: 28px;
     border: none;
+}
+.search-area .search-icon:active{
+    background-image: url(../image/search_icon_pressed.png);
 }
 
 
+.search-area .save-weight-bt{
+    position: absolute;
+    left: 90%;
+    top: 28%;
+    background: none;
+    background-image: url(../image/save_weight.png);
+    background-repeat: no-repeat;
+    background-size: 28px 28px;
+    width: 28px;
+    height: 28px;
+    border: none;
+}
+.search-area .save-weight-bt:active{
+    background-image: url(../image/save_weight_pressed.png);
+}
 
 
 
