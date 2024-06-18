@@ -38,7 +38,6 @@ function init(){
 
         // 在音乐块后创建减少权重的按钮
         var dw_node = document.createElement("button");
-        dw_node.innerText = '-';
         dw_node.id = "dw_" + i; // decrease weight
         dw_node.onclick = decreaseMusicWeight;
         dw_node.className = 'decrease-weight-bt';
@@ -51,7 +50,6 @@ function init(){
 
         // 增加权重的按钮
         var iw_node = document.createElement("button");
-        iw_node.innerText = '+';
         iw_node.id = "iw_" + i; // increads
         iw_node.onclick = increaseMusicWeight;
         iw_node.className = 'increase-weight-bt';
@@ -142,7 +140,7 @@ function allocRandomValueByWeight(){
         // 减去第i首歌的权重, 如果随机值命中了这个范围,那么返回这首歌的索引
         console.log("random_hit residue: " + random_hit + ". will sub " + music_weight_list[i].weight);
         random_hit -= music_weight_list[i].weight;
-        if (random_hit <= 0) {
+        if (random_hit < 0) { // 必须小于 等于不行, 会导致最后一首歌曲无法命中
             console.log("random hit: " + music_list[i]);
             return i;
         }

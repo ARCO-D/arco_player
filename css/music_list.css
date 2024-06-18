@@ -76,11 +76,16 @@
 .decrease-weight-bt{
     position: absolute;
     display: inline-block;
-    height: 40px;
+    background: none;
+    background-image: url(../image/dec_weight.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center center;
+    background-color: #eeeeee;
     width: 5%;
+    height: 40px;
     right: 15%;
     border: none;
-    background-color: #eeeeee;
 }
 .decrease-weight-bt:hover{
     background-color: #dddddd;
@@ -92,11 +97,16 @@
 .increase-weight-bt{
     position: absolute;
     display: inline-block;
-    height: 40px;
+    background: none;
+    background-image: url(../image/inc_weight.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center center;
+    background-color: #eeeeee;
     width: 5%;
+    height: 40px;
     right: 5%;
     border: none;
-    background-color: #eeeeee;
 }
 .increase-weight-bt:hover{
     background-color: #dddddd;
@@ -112,6 +122,8 @@
     width: 5%;
     right: 10%;
     border: none;
+    color: blueviolet;
+    font-size: 16px;
     background-color: #eeeeee;
 }
 
