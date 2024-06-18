@@ -265,3 +265,62 @@ function changeVolume(p){
         volume_display.innerText = Math.round(music.volume * 100) + "%";
     }
 }
+
+// 折叠 & 展开音乐播放器
+function foldPlayer(){
+    var pa = document.getElementById("playerArea");
+    var fp = document.getElementById("foldPlayerBt");
+    var fml= document.getElementById("foldMusicListBt");
+    var ml = document.getElementById("music_list_area");
+    // 显示->隐藏
+    if (player_display_state == 1) {
+        pa.className = "player-area-fold";
+        fp.className = "unfold-player-bt";
+        if (music_list_display_state == 1) {
+            ml.className = "music-list-area-long";
+            fml.className= "fold-music-list-bt-hidden";
+        }
+        else fml.className = "unfold-music-list-bt-hidden";
+        player_display_state = 0;
+    }
+    else {
+        pa.className = "player-area";
+        fp.className = "fold-player-bt";
+        if (music_list_display_state == 1) {
+            ml.className = "music-list-area";
+            fml.className= "fold-music-list-bt";
+        }
+        else fml.className = "unfold-music-list-bt";
+        player_display_state = 1;
+    }
+}
+
+// 折叠 & 展开音乐列表
+function foldMusicList(){
+    var pa = document.getElementById("playerArea");
+    var fp = document.getElementById("foldPlayerBt");
+    var fml= document.getElementById("foldMusicListBt");
+    var ml = document.getElementById("music_list_area");
+    // 显示->隐藏
+    if (music_list_display_state == 1) {
+        fml.className = "unfold-music-list-bt";
+        ml.className = "music-list-area-hidden";
+        if (player_display_state == 1) {
+            fml.className= "unfold-music-list-bt";
+        }
+        else fml.className = "unfold-music-list-bt-hidden";
+        music_list_display_state = 0;
+    }
+    else {
+        fml.className = "fold-music-list-bt";
+        if (player_display_state == 1) {
+            ml.className = "music-list-area";
+            fml.className = "unfold-music-list-bt";
+        }
+        else {
+            ml.className = "music-list-area-long";
+            fml.className= "fold-music-list-bt-hidden";
+        }
+        music_list_display_state = 1;
+    }
+}

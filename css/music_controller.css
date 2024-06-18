@@ -23,9 +23,10 @@ body{
 }  
 
 .main-area{
-    display: fixed;
+    position: fixed;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 /* 播放器区域 */
@@ -36,11 +37,19 @@ body{
     bottom: 0;
     left: 0;
     background-color: steelblue;
+    transition: 2s;
 }
 
 /*播放器折叠*/
 .main-area .player-area-fold{
     position: absolute;
+    height: 13vh;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: steelblue;
+    transition-duration: 2s;
+    transform: translateY(100%);
 }
 
 /*音乐封面区域*/
@@ -189,21 +198,88 @@ body{
 }
 
 /* 折叠播放器区域 */
-.music-control-area-right .fold_player-bt{
-
+.music-control-area-right .fold-player-bt{
+    position: absolute;
+    right: 25px;
+    top: -42px;
+    border: none;
+    background: none;
+    background-image: url(../image/fold_player.png);
+    background-size: 2vw 2vw;
+    width: 2vw;
+    height: 2vw;
+    transition: 2s;
 }
-
 /* 展开播放器区域 */
-.music-control-area-right .unfold_player-bt{
-
+.music-control-area-right .unfold-player-bt{
+    position: absolute;
+    right: 25px;
+    top: -42px;
+    border: none;
+    background: none;
+    background-image: url(../image/unfold_player.png);
+    background-size: 2vw 2vw;
+    width: 2vw;
+    height: 2vw;
+    transition: 2s;
 }
 
-/*折叠播放器区域*/
-/*展开播放器区域*/
 /*折叠音乐列表*/
+.fold-music-list-bt{
+    position: absolute;
+    right: 75px;
+    top: -42px;
+    border: none;
+    background: none;
+    background-image: url(../image/fold_music_list.png);
+    background-size: 2vw 2vw;
+    width: 2vw;
+    height: 2vw;
+    transition: 2s;
+}
+
 /*展开音乐列表*/
+.unfold-music-list-bt{
+    position: absolute;
+    right: 75px;
+    top: -42px;
+    border: none;
+    background: none;
+    background-image: url(../image/unfold_music_list.png);
+    background-size: 2vw 2vw;
+    width: 2vw;
+    height: 2vw;
+    transition: 2s;
+}
+
 /*player隐藏下展开音乐列表*/
-/*player隐藏性折叠音乐列表*/
+.fold-music-list-bt-hidden{
+    position: absolute;
+    right: 75px;
+    top: -42px;
+    border: none;
+    background: none;
+    background-image: url(../image/fold_music_list.png);
+    background-size: 2vw 2vw;
+    width: 2vw;
+    height: 2vw;
+    transition: 2s;
+}
+
+/*player隐藏下折叠音乐列表*/
+.unfold-music-list-bt-hidden{
+    position: absolute;
+    right: 75px;
+    top: -42px;
+    border: none;
+    background: none;
+    background-image: url(../image/unfold_music_list.png);
+    background-size: 2vw 2vw;
+    width: 2vw;
+    height: 2vw;
+    transition: 2s;
+}
+
 
 /*调整音量按键*/
 .inc-volume-bt{
